@@ -40,7 +40,7 @@ class Database {
         const novoArrayDeHeroisSemHeroiQueFoiFiltrado = dados.filter(element => {
             return element.id != id ? true : false;
         });
-        if (dados.lenght == novoArrayDeHeroisSemHeroiQueFoiFiltrado.lenght) {
+        if (dados.length == novoArrayDeHeroisSemHeroiQueFoiFiltrado.length) {
             throw 'Heroi nao achado';
         }
         return await this.escreverArquivos(novoArrayDeHeroisSemHeroiQueFoiFiltrado);
