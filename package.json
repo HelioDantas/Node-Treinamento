@@ -1,0 +1,19 @@
+{
+  "name": "estudos",
+  "version": "1.0.0",
+  "description": "Meus estudos sobre node",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "author": "helio dantas",
+  "email": "helio_dantas@outlook.com",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "mocha": "^6.1.4"
+  },
+  "devDependencies": {
+    "nock": "^10.0.6"
+  }
+}
