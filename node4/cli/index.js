@@ -19,29 +19,45 @@ async function main() {
 
         if (comander.cadastrar) {
             const heroiCadastrado = await database.create(heroi);
-            console.log("Heroi cadastrado",
-                `Nome:  ${heroiCadastrado.name}
+            if (heroiCadastrado) {
+                console.log("Heroi cadastrado",
+                    `Nome:  ${heroiCadastrado.name}
                  Poder: ${heroiCadastrado.poder}
                  Id:    ${heroiCadastrado.id}`);
+                return;
+            }
+            console.log("Erro ao cadastrar")
         }
         if (comander.lista) {
             const heroiBuscado = await database.list(heroi.name);
-            console.log("Heroi listado",
-                `Nome:  ${heroiBuscado.name}
-                 Poder: ${heroiBuscado.poder}
-                 Id:    ${heroiBuscado.id}`);
+            if (heroiBuscado) {
+                console.log("Heroi listado",
+                    `Nome:  ${heroiBuscado.name}
+                     Poder: ${heroiBuscado.poder}
+                     Id:    ${heroiBuscado.id}`);
+                return;
+            }
+            console.log("Erro ao buscar o Heroi");
         }
         if (comander.delete) {
             const heroiDeletado = await database.delete(heroi.id);
             console.log("Heroi deletado")
         }
         if (comander.update) {
-            const heroiAtualizado = await database.update(heroi);
-            console.log("Heroi atualizado",
-                `Nome:  ${heroiAtualizado.name}
-                 Poder: ${heroiAtualizado.poder}
-                 Id:    ${heroiAtualizado.id}`);
+            const dado = JSON.stringify(heroi);
+            const heroiAtualizar = JSON.parse(dado);
+            const heroiAtualizado = await database.update(heroiAtualizar);
+            if (heroiAtualizado) {
+                console.log(      
+                    `heroiAtualizado
+                     Nome:  ${heroiAtualizado.name}
+                     Poder: ${heroiAtualizado.poder}
+                     Id:    ${heroiAtualizado.id}`);
+                return;
+            }
+            console.log('Erro ao atualizar!')
         }
+
     } catch (error) {
         console.error(error);
     }

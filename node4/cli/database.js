@@ -57,10 +57,15 @@ class Database {
             return element.id == heroi.id ? true : false
         });
         if (!heroiFind) {
-            return null;
+             throw "Heroi nao achado!";
         }
         const dadosNovos = dados.map(element => {
-            return element.id == heroi.id ? { name: heroi.name, poder: heroi.poder, id: heroi.id, } : element;
+            return element.id == heroi.id ?
+                {
+                    ...element,
+                    ...heroi
+                }
+                : element;
 
         })
         await this.escreverArquivos(dadosNovos);
