@@ -11,6 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "comander": "0.0.1-security",
+    "commander": "^2.20.0",
     "mocha": "^6.1.4"
   },
   "devDependencies": {

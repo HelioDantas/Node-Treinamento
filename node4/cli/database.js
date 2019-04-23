@@ -40,8 +40,8 @@ class Database {
         const novoArrayDeHeroisSemHeroiQueFoiFiltrado = dados.filter(element => {
             return element.id != id ? true : false;
         });
-        if (dados.length == novoArrayDeHeroisSemHeroiQueFoiFiltrado.lenght) {
-            return false;
+        if (dados.lenght == novoArrayDeHeroisSemHeroiQueFoiFiltrado.lenght) {
+            throw 'Heroi nao achado';
         }
         return await this.escreverArquivos(novoArrayDeHeroisSemHeroiQueFoiFiltrado);
     }
@@ -68,10 +68,12 @@ class Database {
     }
 
     geradorDeId(dados) {
+        if (!dados) {
+            return 0;
+        }
         let dadosFiltrados = dados.reduce((anterior, posterior) => {
             return anterior.id > posterior.id ? anterior.id : posterior.id;
-        });
-
+        }, 1);
         return ++dadosFiltrados;
     }
     geradorDeHeroisComId(heroi, dados) {
@@ -90,7 +92,9 @@ class Database {
     async geradorDeNovoArrayDeHerois(heroi) {
         const dados = await this.obterArquivo(this.nomeArquivo);
         const heroiComId = this.geradorDeHeroisComId(heroi, dados);
-
+        if (!dados) {
+            heroiComId;
+        }
         return [
             ...dados,
             heroiComId
