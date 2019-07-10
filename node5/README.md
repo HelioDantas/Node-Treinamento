@@ -27,7 +27,7 @@
 - basededadod = herois
 
 
-###Mongo
+### Mongo
 
 ###### pega a imagem do mongo e a coloca na porta 27017 e roda em segundo plano
 `docker run  --name mongodb  -e MONGO_INITDB_ROOT_USERNAME=admin  -e MONGO_INITDB_ROOT_PASSWORD=123 -p 27017:27017  -d  mongo:4`
@@ -35,15 +35,15 @@
 ###### pega a imagem do mongoclient uma inteface grafica para voce usa o mongo
 `docker run --name mongoclient -p 3000:3000 --link mongodb:mongodb -d  mongoclient/mongoclient`
 
-[Links para adminer](http://localhost:3000)
+[Links para mongoclient](http://localhost:3000)
 
-####### apos isso va em conection crie uma nova conexao 
+###### apos isso va em conection crie uma nova conexao 
 
 
 - addName       = mongodb
 - Host/Port     = mongodb
 - Database Name = admin
-######## va na aba Authentication 
+###### va na aba Authentication 
 
 - Authentication Type = Scram-Sha-1
 - Username            = admin
